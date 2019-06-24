@@ -1,43 +1,35 @@
-# https://ieftimov.com/post/refactoring-builder-pattern/
-require './app/models/Student'
+require './app/models/Docente'
 
-class StudentBuilder
+class DocenteBuilder
+  attr_reader :docente
+
   def initialize
-    @student = Student.new    
+    @docente = Docente.new    
   end
 
   def set_codigo (codigo)
     validate_presence!("Codigo", codigo)
-    @student.codigo = codigo
+    @docente.codigo = codigo
   end
 
   def set_nombre (nombre)
     validate_presence!("Nombre", nombre)
-    @student.nombre = nombre
+    @docente.nombre = nombre
   end
 
   def set_apellido (apellido)
     validate_presence!("Apellido", apellido)
-    @student.apellido = apellido
-  end
-
-  def set_type (type)
-    validate_presence!("Type", type)
-    @student.type = type
+    @docente.apellido = apellido
   end
 
   def set_email (email)
     validate_presence!("Email", email)
-    @student.email = email
+    @docente.email = email
   end
 
   def set_password (password)
     validate_presence!("Password", password)
-    @student.password = password
-  end
-
-  def student
-    @student
+    @docente.password = password
   end
 
   private
