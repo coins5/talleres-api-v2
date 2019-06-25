@@ -1,6 +1,7 @@
 require './app/models/Docente'
+require './app/builders/PrimaryBuilder'
 
-class DocenteBuilder
+class DocenteBuilder < PrimaryBuilder
   attr_reader :docente
 
   def initialize
@@ -31,11 +32,4 @@ class DocenteBuilder
     validate_presence!("Password", password)
     @docente.password = password
   end
-
-  private
-
-  def validate_presence!(attr_name, attr_value)
-    raise "#{attr_name} es obligatorio." if attr_value.nil?
-  end
-
 end

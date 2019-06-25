@@ -1,7 +1,8 @@
 # https://ieftimov.com/post/refactoring-builder-pattern/
 require './app/models/Alumno'
+require './app/builders/PrimaryBuilder'
 
-class AlumnoBuilder
+class AlumnoBuilder < PrimaryBuilder
   attr_reader :alumno
 
   def initialize
@@ -32,11 +33,4 @@ class AlumnoBuilder
     validate_presence!("Password", password)
     @alumno.password = password
   end
-
-  private
-
-  def validate_presence!(attr_name, attr_value)
-    raise "#{attr_name} es obligatorio." if attr_value.nil?
-  end
-
 end
