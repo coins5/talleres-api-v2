@@ -9,7 +9,7 @@ class TallerBuilder < PrimaryBuilder
   end
 
   def set_codigo (codigo)
-    validate_presence!("Codigo", codigo)
+    # validate_presence!("Codigo", codigo)
     @taller.codigo = codigo
   end
 

@@ -9,7 +9,7 @@ class DocenteBuilder < PrimaryBuilder
   end
 
   def set_codigo (codigo)
-    validate_presence!("Codigo", codigo)
+    # validate_presence!("Codigo", codigo)
     @docente.codigo = codigo
   end
 
@@ -24,12 +24,12 @@ class DocenteBuilder < PrimaryBuilder
   end
 
   def set_email (email)
-    validate_presence!("Email", email)
+    # validate_presence!("Email", email)
     @docente.email = email
   end
 
   def set_password (password)
-    validate_presence!("Password", password)
+    # validate_presence!("Password", password)
     @docente.password = password
   end
 end

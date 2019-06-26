@@ -10,7 +10,8 @@ class AlumnoBuilder < PrimaryBuilder
   end
 
   def set_codigo (codigo)
-    validate_presence!("Codigo", codigo)
+    
+    # validate_presence!("Codigo", codigo)
     @alumno.codigo = codigo
   end
 
@@ -25,12 +26,12 @@ class AlumnoBuilder < PrimaryBuilder
   end
 
   def set_email (email)
-    validate_presence!("Email", email)
+    # validate_presence!("Email", email)
     @alumno.email = email
   end
 
   def set_password (password)
-    validate_presence!("Password", password)
+    # validate_presence!("Password", password)
     @alumno.password = password
   end
 end
