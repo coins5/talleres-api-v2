@@ -9,7 +9,6 @@ class PrimaryBuilder
 
   def validate_tipo_taller!(tipoTaller)
     oTipoTaller = tipoTaller.downcase
-    puts oTipoTaller
     unless VALID_TIPO_TALLER.include?(oTipoTaller)
       raise "Tipo de taller inválido: #{oTipoTaller}"
     end

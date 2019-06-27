@@ -19,17 +19,17 @@ class MatriculaBuilder < PrimaryBuilder
   end
 
   def set_eval1 (eval1)
-    validate_presence!("eval1", eval1)
+    #validate_presence!("eval1", eval1)
     @matricula.eval1 = eval1
   end
 
   def set_eval2 (eval2)
-    validate_presence!("eval2", eval2)
+    #validate_presence!("eval2", eval2)
     @matricula.eval2 = eval2
   end
 
   def set_evalFinal (evalFinal)
-    validate_presence!("evalFinal", evalFinal)
+    #validate_presence!("evalFinal", evalFinal)
     @matricula.evalFinal = evalFinal
   end
 end
