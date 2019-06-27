@@ -65,4 +65,30 @@ class PrimaryController
     return @client.affected_rows
   end
 
+  def get_alumno (id)
+    # TODO: Validar que id sea int
+    query = "SELECT codigo, nombre, apellido FROM Alumno WHERE codigo = #{id}"
+    return queryToArray(query)
+  end
+
+  def get_docente (id)
+    # TODO: Validar que id sea int
+    query = "SELECT codigo, nombre, apellido FROM Docente WHERE codigo = #{id}"
+    return queryToArray(query)
+  end
+
+  def get_taller (id)
+    # TODO: Validar que id sea int
+    query = "SELECT codigo, nombre, tipoTaller, codigo_docente FROM Taller WHERE codigo = #{id}"
+    return queryToArray(query)
+  end
+
+private
+  def queryToArray (query)
+    _rows = []
+    results = @client.query(query).each do |row|
+      _rows.push(row)
+    end
+    return _rows
+  end
 end

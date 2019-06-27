@@ -16,4 +16,8 @@ class AlumnoController < PrimaryController
 
     @primaryController.insert_alumno(builder.alumno)
   end
+
+  def getAlumno (id)
+    return @primaryController.get_alumno(id)
+  end
 end
