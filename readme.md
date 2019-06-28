@@ -26,7 +26,7 @@ rspec specs\Specs.rb --color --format doc
 
 👤 **Natalia Bejar / Bruno Ramirez / Marlon Colca**
 
-* Github: [@@coins5](https://github.com/@coins5)
+* Github: [@coins5](https://github.com/@coins5)
 
 ## 🤝 Contributing
 
