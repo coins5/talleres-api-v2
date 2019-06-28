@@ -3,10 +3,11 @@ require 'mysql2'
 class PrimaryController
   def initialize
     @client = Mysql2::Client.new(
-      :host => 'localhost',
-      :username => 'root',
-      :password => 'mysql',
-      :database => 'talleresDB'
+      host: 'localhost',
+      username: 'root',
+      # password: 'mysql',
+      password: '123456',
+      database: 'talleresDB'
     )
   end
 

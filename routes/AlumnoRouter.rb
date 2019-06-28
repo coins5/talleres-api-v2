@@ -14,7 +14,7 @@ post '/createAlumno' do
 
   status __status
   content_type :json
-  data = { :status => __status, :message => __message, :affectedRows => __affectedRows }
+  data = { status: __status, message: __message, affectedRows: __affectedRows }
   body data.to_json
 end
 
@@ -30,6 +30,6 @@ get '/getAlumno/:codigo' do
 
   status __status
   content_type :json
-  data = { :status => __status, :message => __message, :rows => __rows }
+  data = { status: __status, message: __message, rows: __rows }
   body data.to_json
 end
