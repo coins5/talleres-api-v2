@@ -14,4 +14,8 @@ class MatriculaController < PrimaryController
 
     @primaryController.insert_matricula(builder.matricula)
   end
+
+  def getMatricula (id_alumno, id_taller)
+    return @primaryController.get_matricula(id_alumno, id_taller)
+  end
 end

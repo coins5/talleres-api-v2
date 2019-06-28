@@ -15,4 +15,8 @@ class TallerController < PrimaryController
 
     @primaryController.insert_taller(builder.taller)
   end
+
+  def getTaller (id)
+    return @primaryController.get_taller(id)
+  end
 end

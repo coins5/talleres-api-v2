@@ -16,4 +16,8 @@ class DocenteController < PrimaryController
 
     @primaryController.insert_docente(builder.docente)
   end
+
+  def getDocente (id)
+    return @primaryController.get_docente(id)
+  end
 end
