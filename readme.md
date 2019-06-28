@@ -19,7 +19,7 @@ ruby .\server.rb
 ## Run tests
 
 ```sh
-rspec specs\Specs.rb --color --format doc
+rspec ./specs/Specs.rb --color --format doc
 ```
 
 ## Author
