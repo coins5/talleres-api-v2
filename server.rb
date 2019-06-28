@@ -10,6 +10,7 @@ require './routes/MatriculaRouter.rb'
 set :port, 2193
 
 get '/' do
-  'It works x)'
+  data = { status: 200, message: 'It works x)', affectedRows: 0 }
+  body data.to_json
 end
 
