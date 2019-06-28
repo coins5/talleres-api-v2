@@ -83,6 +83,13 @@ class PrimaryController
     return queryToArray(query)
   end
 
+  def get_matricula (codigo_alumno, codigo_taller)
+    # TODO: Validar que codigo_alumno, codigo_taller sean int
+    query = "SELECT codigo_alumno, codigo_taller, eval1, eval2, evalFinal FROM Matricula "
+    query += "WHERE codigo_alumno = #{codigo_alumno} AND codigo_taller = #{codigo_taller}"
+    return queryToArray(query)
+  end
+
 private
   def queryToArray (query)
     _rows = []
