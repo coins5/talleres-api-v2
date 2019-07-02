@@ -16,7 +16,7 @@ class AlumnoController < PrimaryController
     password = @client.escape(builder.alumno.password)
 
     query = 'INSERT INTO Alumno (nombre, apellido, email, password) VALUES ('
-    query += "'#{nombre}', '#{apellido}', '#{email}', '#{password}');" 
+    query += "'#{nombre}', '#{apellido}', '#{email}', '#{password}');"
 
     @client.query(query)
     return @client.affected_rows
