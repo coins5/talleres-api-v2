@@ -50,7 +50,7 @@ post '/matricula/setNota' do
     __status = 412
     __message = exception.to_s
   end
-  
+
   status __status
   content_type :json
   data = { status: __status, message: __message, affectedRows: __affectedRows }

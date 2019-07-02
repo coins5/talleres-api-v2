@@ -17,4 +17,3 @@ end
 # Set environment variables for production:
 # RACK_ENV=production
 # MYSQL_ROOT_PASSWORD=strong_password
-
