@@ -14,4 +14,7 @@ get '/' do
   body data.to_json
 end
 
-# For production mode run: $ RACK_ENV=production ruby server.rb
+# Set environment variables for production:
+# RACK_ENV=production
+# MYSQL_ROOT_PASSWORD=strong_password
+
