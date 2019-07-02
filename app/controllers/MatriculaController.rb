@@ -18,9 +18,8 @@ class MatriculaController < PrimaryController
     query = 'INSERT INTO Matricula (codigo_alumno, codigo_taller) VALUES ('
     query += "#{codigo_alumno}, #{codigo_taller});" 
 
-    results = @client.query(query)
+    @client.query(query)
     return @client.affected_rows
-
   end
 
   def getMatricula (codigo_alumno, codigo_taller)
@@ -41,7 +40,7 @@ class MatriculaController < PrimaryController
     query = "UPDATE Matricula SET #{tipoEval}=#{nota} "
     query += "WHERE codigo_alumno=#{codigo_alumno} AND codigo_taller=#{codigo_taller}"
 
-    results = @client.query(query)
+    @client.query(query)
     return @client.affected_rows
   end
 

@@ -18,7 +18,7 @@ class AlumnoController < PrimaryController
     query = 'INSERT INTO Alumno (nombre, apellido, email, password) VALUES ('
     query += "'#{nombre}', '#{apellido}', '#{email}', '#{password}');" 
 
-    results = @client.query(query)
+    @client.query(query)
     return @client.affected_rows
   end
 
@@ -30,7 +30,6 @@ class AlumnoController < PrimaryController
 
   def getNotasFromAlumno (id)
     validateInteger!('id', id)
-    query = "CALL getNotasFromAlumno(#{id})"
-    return queryToArray(query)
+    return queryToArray("CALL getNotasFromAlumno(#{id})")
   end
 end
