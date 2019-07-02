@@ -14,3 +14,4 @@ get '/' do
   body data.to_json
 end
 
+# For production mode run: $ RACK_ENV=production ruby server.rb
