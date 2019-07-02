@@ -68,7 +68,7 @@ class PrimaryController
   end
 
   def get_alumno (id)
-    validateInteger!('id', d)
+    validateInteger!('id', id)
     query = "SELECT codigo, nombre, apellido FROM Alumno WHERE codigo = #{id}"
     return queryToArray(query)
   end
