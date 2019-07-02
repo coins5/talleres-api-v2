@@ -18,21 +18,19 @@ class TallerController < PrimaryController
     query = 'INSERT INTO Taller (nombre, tipoTaller, codigo_docente) VALUES ('
     query += "'#{nombre}', '#{tipoTaller}', '#{codigo_docente}');" 
 
-    results = @client.query(query)
+    @client.query(query)
     return @client.affected_rows
   end
 
   def getTaller (id)
-    # return @primaryController.get_taller(id)
     validateInteger!('id', id)
-    query = "SELECT codigo, nombre, tipoTaller, codigo_docente FROM Taller WHERE codigo = #{id}"
+    query = 'SELECT codigo, nombre, tipoTaller, codigo_docente FROM '
+    query += "Taller WHERE codigo = #{id}"
     return queryToArray(query)
   end
 
   def getAlumnosFromTaller (id)
     validateInteger!('id', id)
-
-    query = "CALL getAlumnosFromTaller(#{id})"
-    return queryToArray(query)
+    return queryToArray("CALL getAlumnosFromTaller(#{id})")
   end
 end
