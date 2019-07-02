@@ -112,10 +112,6 @@ private
   end
 
   def getMysqlUserPassword ()
-    if settings.development?
-      return "123456"
-    elsif settings.production?
-      return "Sjn=ch.gT!al!93=9188fAf.-"
-    end
+    return ENV['MYSQL_ROOT_PASSWORD'] || '123456'
   end
 end
