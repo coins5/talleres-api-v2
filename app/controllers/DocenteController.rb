@@ -2,9 +2,6 @@ require './app/controllers/PrimaryController'
 require './app/builders/DocenteBuilder'
 
 class DocenteController < PrimaryController
-  def initialize
-     @primaryController = PrimaryController.new 
-  end
 
   def createDocente (body)
     builder = DocenteBuilder.new
@@ -14,10 +11,26 @@ class DocenteController < PrimaryController
     builder.set_email(body['email'])
     builder.set_password(body['password'])
 
-    @primaryController.insert_docente(builder.docente)
+    nombre = @client.escape(builder.docente.nombre)
+    apellido = @client.escape(builder.docente.apellido)
+    email = @client.escape(builder.docente.email)
+    password = @client.escape(builder.docente.password)
+
+    query = 'INSERT INTO Docente (nombre, apellido, email, password) VALUES ('
+    query += "'#{nombre}', '#{apellido}', '#{email}', '#{password}');" 
+
+    @client.query(query)
+    return @client.affected_rows
   end
 
-  def getDocente (id)
-    return @primaryController.get_docente(id)
+  def getDocente (id)    
+    validateInteger!('id', id)
+    query = "SELECT codigo, nombre, apellido FROM Docente WHERE codigo = #{id}"
+    return queryToArray(query)
+  end
+
+  def getTalleresFromDocente (id)
+    validateInteger!('id', id)
+    return queryToArray("CALL getTalleresFromDocente(#{id})")
   end
 end

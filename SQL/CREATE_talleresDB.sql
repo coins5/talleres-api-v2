@@ -34,3 +34,76 @@ CREATE TABLE Taller (
   , codigo_docente INT UNSIGNED
 );
 
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS getAlumnosFromTaller //
+CREATE PROCEDURE getAlumnosFromTaller (
+    _codigo_taller INT UNSIGNED
+)
+BEGIN
+    SELECT
+        A.codigo AS codigo
+        , A.nombre AS nombre
+        , A.apellido AS apellido
+        , A.email AS email
+        , M.eval1
+        , M.eval2
+        , M.evalFinal
+    FROM
+         Matricula AS M
+         INNER JOIN Taller AS T
+            ON M.codigo_taller = T.codigo
+        INNER JOIN Alumno AS A
+            ON M.codigo_alumno = A.codigo
+    WHERE
+        T.codigo = _codigo_taller
+    ;
+END //
+DELIMITER ;
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS getTalleresFromDocente //
+CREATE PROCEDURE getTalleresFromDocente (
+    _codigo_docente INT UNSIGNED
+)
+BEGIN
+    SELECT
+        T.codigo
+        , T.nombre
+        , T.tipoTaller
+    FROM
+        Docente AS D
+        INNER JOIN Taller AS T
+            ON D.codigo = T.codigo_docente
+    WHERE
+        D.codigo = _codigo_docente
+    ;
+END //
+DELIMITER ;
+
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS getNotasFromAlumno //
+CREATE PROCEDURE getNotasFromAlumno (
+    _codigo_alumno INT UNSIGNED
+)
+BEGIN
+    SELECT
+        M.codigo_taller
+        , M.eval1
+        , M.eval2
+        , M.evalFinal
+        , T.nombre AS nombre_taller
+        , T.tipoTaller
+        , T.codigo_docente
+    FROM
+        Alumno AS A
+        INNER JOIN Matricula AS M
+            ON M.codigo_alumno = A.codigo
+        INNER JOIN Taller AS T
+            ON M.codigo_taller = T.codigo
+    WHERE
+        A.codigo = _codigo_alumno
+    ;
+END //
+DELIMITER ;
