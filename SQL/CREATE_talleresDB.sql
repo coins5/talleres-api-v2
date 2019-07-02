@@ -21,9 +21,9 @@ CREATE TABLE Docente (
 CREATE TABLE Matricula (
   codigo_alumno INT UNSIGNED
   , codigo_taller INT UNSIGNED
-  , eval1 NUMERIC(6, 2)
-  , eval2 NUMERIC(6, 2)
-  , evalFinal NUMERIC(6, 2)
+  , eval1 NUMERIC(6, 2) NOT NULL DEFAULT 0.0
+  , eval2 NUMERIC(6, 2) NOT NULL DEFAULT 0.0
+  , evalFinal NUMERIC(6, 2) NOT NULL DEFAULT 0.0
   , PRIMARY KEY(codigo_alumno, codigo_taller)
 );
 
