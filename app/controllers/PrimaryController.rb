@@ -2,11 +2,13 @@ require 'mysql2'
 
 class PrimaryController
   def initialize
+    pwd = getMysqlUserPassword()
+    puts "USING HASH: #{pwd}"
     @client = Mysql2::Client.new(
       host: 'localhost',
       username: 'root',
       # password: 'mysql',
-      password: '123456',
+      password: pwd,
       database: 'talleresDB'
     )
   end
@@ -106,6 +108,14 @@ private
       Integer(attr_value)
     rescue => exception
       raise "#{attr_name} debe ser integer. Valor encontrado: #{attr_value}"
+    end
+  end
+
+  def getMysqlUserPassword ()
+    if settings.development?
+      return "123456"
+    elsif settings.production?
+      return "Sjn=ch.gT!al!93=9188fAf.-"
     end
   end
 end

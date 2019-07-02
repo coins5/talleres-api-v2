@@ -7,7 +7,6 @@ require './routes/DocenteRouter.rb'
 require './routes/TallerRouter.rb'
 require './routes/MatriculaRouter.rb'
 
-set :bind, '0.0.0.0'
 set :port, 2193
 
 get '/' do
