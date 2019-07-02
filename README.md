@@ -1,7 +1,7 @@
 <h1 align="center">Welcome to Talleres api V2 👋</h1>
 <p>
-  <img src="https://img.shields.io/badge/version-2.0.2-blue.svg?cacheSeconds=2592000" />
-  <a target="_blank" href="https://documenter.getpostman.com/view/1064779/S1a8yjTV?version=latest#d5e38ffc-d99c-4787-bc7d-96a82763f279">
+  <img src="https://img.shields.io/badge/version-2.0.2-blue.svg?cacheSeconds=2592000" target="_blank" />
+  <a href="https://documenter.getpostman.com/view/1064779/S1a8yjTV?version=latest" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
   </a>
 </p>
