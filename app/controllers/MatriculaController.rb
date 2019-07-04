@@ -15,10 +15,9 @@ class MatriculaController < PrimaryController
     codigo_alumno = builder.matricula.codigo_alumno
     codigo_taller = builder.matricula.codigo_taller
 
-    query = 'INSERT INTO Matricula (codigo_alumno, codigo_taller) VALUES ('
-    query += "#{codigo_alumno}, #{codigo_taller});" 
-
-    @client.query(query)
+    query = 'INSERT INTO Matricula (codigo_alumno, codigo_taller) VALUES (?, ?)'
+    statement = @client.prepare(query)
+    results = statement.execute(codigo_alumno, codigo_taller)
     return @client.affected_rows
   end
 
@@ -26,9 +25,11 @@ class MatriculaController < PrimaryController
     validateInteger!('codigo_alumno', codigo_alumno)
     validateInteger!('codigo_taller', codigo_taller)
 
-    query = "SELECT codigo_alumno, codigo_taller, eval1, eval2, evalFinal FROM Matricula "
-    query += "WHERE codigo_alumno = #{codigo_alumno} AND codigo_taller = #{codigo_taller}"
-    return queryToArray(query)
+    query = 'SELECT codigo_alumno, codigo_taller, eval1, eval2, evalFinal FROM Matricula '
+    query += 'WHERE codigo_alumno = ? AND codigo_taller = ?'
+    statement = @client.prepare(query)
+    results = statement.execute(codigo_alumno, codigo_taller)
+    return resultToArray(results)
   end
 
   def setNota (codigo_alumno, codigo_taller, tipoEval, nota)
@@ -37,10 +38,10 @@ class MatriculaController < PrimaryController
     validateInteger!('codigo_taller', codigo_taller)
     validateInteger!('nota', nota)
 
-    query = "UPDATE Matricula SET #{tipoEval}=#{nota} "
-    query += "WHERE codigo_alumno=#{codigo_alumno} AND codigo_taller=#{codigo_taller}"
-
-    @client.query(query)
+    query = "UPDATE Matricula SET #{tipoEval}=? "
+    query += 'WHERE codigo_alumno=? AND codigo_taller=?'
+    statement = @client.prepare(query)
+    results = statement.execute(nota, codigo_alumno, codigo_taller)
     return @client.affected_rows
   end
 

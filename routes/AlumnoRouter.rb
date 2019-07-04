@@ -1,7 +1,9 @@
 require './app/controllers/AlumnoController'
-alumnoController = AlumnoController.new
+# alumnoController = AlumnoController.new
 
 post '/createAlumno' do
+  alumnoController = AlumnoController.new
+
   __body = JSON.parse(request.body.read)
   __status = 200
   __affectedRows = 0
@@ -19,6 +21,8 @@ post '/createAlumno' do
 end
 
 get '/getAlumno/:codigo' do
+  alumnoController = AlumnoController.new
+
   __status = 200
   __rows = []
   begin
@@ -35,6 +39,8 @@ get '/getAlumno/:codigo' do
 end
 
 get '/alumno/:codigo/getTalleres' do
+  alumnoController = AlumnoController.new
+
   __status = 200
   __rows = []
   begin
@@ -51,6 +57,8 @@ get '/alumno/:codigo/getTalleres' do
 end
 
 get '/alumno/:codigo/getNotas' do
+  alumnoController = AlumnoController.new
+  
   __status = 200
   __rows = []
   begin

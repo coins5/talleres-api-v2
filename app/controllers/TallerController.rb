@@ -15,22 +15,34 @@ class TallerController < PrimaryController
     tipoTaller = @client.escape(builder.taller.tipoTaller)
     codigo_docente = builder.taller.codigo_docente
 
-    query = 'INSERT INTO Taller (nombre, tipoTaller, codigo_docente) VALUES ('
-    query += "'#{nombre}', '#{tipoTaller}', '#{codigo_docente}');" 
-
-    @client.query(query)
+    query = 'INSERT INTO Taller (nombre, tipoTaller, codigo_docente) VALUES (?, ?, ?)'
+    statement = @client.prepare(query)
+    results = statement.execute(nombre, tipoTaller, codigo_docente)
     return @client.affected_rows
+  end
+
+  def getTalleres ()
+    query = 'CALL getTalleres()'
+    statement = @client.prepare(query)
+    results = statement.execute()
+    return resultToArray(results)
   end
 
   def getTaller (id)
     validateInteger!('id', id)
+
     query = 'SELECT codigo, nombre, tipoTaller, codigo_docente FROM '
-    query += "Taller WHERE codigo = #{id}"
-    return queryToArray(query)
+    query += 'Taller WHERE codigo = ?'
+    statement = @client.prepare(query)
+    results = statement.execute(id)
+    return resultToArray(results)
   end
 
   def getAlumnosFromTaller (id)
     validateInteger!('id', id)
-    return queryToArray("CALL getAlumnosFromTaller(#{id})")
+    query = 'CALL getAlumnosFromTaller(?)'
+    statement = @client.prepare(query)
+    results = statement.execute(id)
+    return resultToArray(results)
   end
 end

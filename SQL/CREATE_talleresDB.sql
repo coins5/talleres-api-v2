@@ -62,6 +62,24 @@ END //
 DELIMITER ;
 
 DELIMITER //
+DROP PROCEDURE IF EXISTS getTalleres //
+CREATE PROCEDURE getTalleres ()
+BEGIN
+    SELECT
+        T.codigo AS codigo_taller
+        , T.nombre AS nombre_taller
+        , T.tipoTaller
+        , D.codigo AS codigo_docente
+        , D.nombre AS nombre_docente
+    FROM
+        Docente AS D
+        INNER JOIN Taller AS T
+            ON D.codigo = T.codigo_docente
+    ;
+END //
+DELIMITER ;
+
+DELIMITER //
 DROP PROCEDURE IF EXISTS getTalleresFromDocente //
 CREATE PROCEDURE getTalleresFromDocente (
     _codigo_docente INT UNSIGNED
