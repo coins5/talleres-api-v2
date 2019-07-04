@@ -15,13 +15,7 @@ class DocenteController < PrimaryController
     apellido = @client.escape(builder.docente.apellido)
     email = @client.escape(builder.docente.email)
     password = @client.escape(builder.docente.password)
-=begin
-    query = 'INSERT INTO Docente (nombre, apellido, email, password) VALUES ('
-    query += "'#{nombre}', '#{apellido}', '#{email}', '#{password}');" 
 
-    @client.query(query)
-    return @client.affected_rows
-=end
     query = 'INSERT INTO Docente (nombre, apellido, email, password) VALUES (?, ?, ?, ?)'
     statement = @client.prepare(query)
     results = statement.execute(nombre, apellido, email, password)
@@ -30,10 +24,7 @@ class DocenteController < PrimaryController
 
   def getDocente (id)    
     validateInteger!('id', id)
-=begin
-    query = "SELECT codigo, nombre, apellido FROM Docente WHERE codigo = #{id}"
-    return queryToArray(query)
-=end
+
     query = 'SELECT codigo, nombre, apellido FROM Docente WHERE codigo = ?'
     statement = @client.prepare(query)
     results = statement.execute(id)
