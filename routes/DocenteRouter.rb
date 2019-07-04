@@ -1,7 +1,9 @@
 require './app/controllers/DocenteController'
-docenteController = DocenteController.new
+# docenteController = DocenteController.new
 
 post '/createDocente' do
+  docenteController = DocenteController.new
+
   __body = JSON.parse(request.body.read)
   __status = 200
   __affectedRows = 0
@@ -19,6 +21,8 @@ post '/createDocente' do
 end
 
 get '/getDocente/:codigo' do
+  docenteController = DocenteController.new
+
   __status = 200
   __rows = []
   begin
@@ -35,6 +39,8 @@ get '/getDocente/:codigo' do
 end
 
 get '/docente/:codigo/getTalleres' do
+  docenteController = DocenteController.new
+  
   __status = 200
   __rows = []
   begin

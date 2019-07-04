@@ -16,21 +16,27 @@ class DocenteController < PrimaryController
     email = @client.escape(builder.docente.email)
     password = @client.escape(builder.docente.password)
 
-    query = 'INSERT INTO Docente (nombre, apellido, email, password) VALUES ('
-    query += "'#{nombre}', '#{apellido}', '#{email}', '#{password}');" 
-
-    @client.query(query)
+    query = 'INSERT INTO Docente (nombre, apellido, email, password) VALUES (?, ?, ?, ?)'
+    statement = @client.prepare(query)
+    results = statement.execute(nombre, apellido, email, password)
     return @client.affected_rows
   end
 
   def getDocente (id)    
     validateInteger!('id', id)
-    query = "SELECT codigo, nombre, apellido FROM Docente WHERE codigo = #{id}"
-    return queryToArray(query)
+
+    query = 'SELECT codigo, nombre, apellido FROM Docente WHERE codigo = ?'
+    statement = @client.prepare(query)
+    results = statement.execute(id)
+    return resultToArray(results)
   end
 
   def getTalleresFromDocente (id)
     validateInteger!('id', id)
-    return queryToArray("CALL getTalleresFromDocente(#{id})")
+    # return queryToArray("CALL getTalleresFromDocente(#{id})")
+    query = 'CALL getTalleresFromDocente(?)'
+    statement = @client.prepare(query)
+    results = statement.execute(id)
+    return resultToArray(results)
   end
 end

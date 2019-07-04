@@ -1,7 +1,9 @@
 require './app/controllers/MatriculaController'
-matriculaController = MatriculaController.new
+# matriculaController = MatriculaController.new
 
 post '/createMatricula' do
+  matriculaController = MatriculaController.new
+
   __body = JSON.parse(request.body.read)
   __status = 200
   __affectedRows = 0
@@ -19,6 +21,8 @@ post '/createMatricula' do
 end
 
 get '/getMatricula/:codigoAlumno/:codigoTaller' do
+  matriculaController = MatriculaController.new
+
   __status = 200
   __rows = []
   begin
@@ -35,6 +39,8 @@ get '/getMatricula/:codigoAlumno/:codigoTaller' do
 end
 
 post '/matricula/setNota' do
+  matriculaController = MatriculaController.new
+
   __body = JSON.parse(request.body.read)
   __status = 200
   __affectedRows = 0

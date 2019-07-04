@@ -9,7 +9,8 @@ class PrimaryController
       username: 'root',
       # password: 'mysql',
       password: pwd,
-      database: 'talleresDB'
+      database: 'talleresDB',
+      reconnect: true
     )
   end
 
@@ -18,6 +19,29 @@ private
   def queryToArray (query)
     _rows = []
     results = @client.query(query).each do |row|
+      _rows.push(row)
+    end
+    return _rows
+  end
+
+  def callStatement (query, *params)
+    statement = @client.prepare(query)
+    if (params.size == 0)
+      results = statement.execute()
+    else
+      results = statement.execute(params)
+    end
+    
+    _rows = []
+    results.each do |row|
+      _rows.push(row)
+    end
+    return _rows
+  end
+
+  def resultToArray (results)
+    _rows = []
+    results.each do |row|
       _rows.push(row)
     end
     return _rows

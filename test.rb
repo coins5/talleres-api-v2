@@ -1,6 +1,22 @@
+require 'mysql2'
+$client = Mysql2::Client.new(
+  host: 'localhost',
+  username: 'root',
+  # password: 'mysql',
+  password: '123456',
+  database: 'talleresDB',
+  reconnect: true
+)
 
-attr_name = 'PRUEBA'
-attr_value = 1
-raise "#{attr_name} debe ser integer. Valor encontrado: #{attr_value}" unless (attr_value.is_a? Integer)
+def queryToArray (query)
+  _rows = []
+  results = $client.query(query).each do |row|
+    _rows.push(row)
+  end
+  return _rows
+end
 
-puts ENV['MYSQL_ROOT_PASSWORD'] || '123456'
+puts queryToArray("SELECT * FROM Alumno")
+puts queryToArray("SELECT * FROM Alumno")
+puts queryToArray("SELECT * FROM Alumno")
+puts queryToArray("SELECT * FROM Alumno")
