@@ -99,7 +99,6 @@ BEGIN
 END //
 DELIMITER ;
 
-
 DELIMITER //
 DROP PROCEDURE IF EXISTS getNotasFromAlumno //
 CREATE PROCEDURE getNotasFromAlumno (
@@ -114,12 +113,16 @@ BEGIN
         , T.nombre AS nombre_taller
         , T.tipoTaller
         , T.codigo_docente
+        , D.nombre AS nombre_docente
+        , D.apellido AS apellido_docente
     FROM
         Alumno AS A
         INNER JOIN Matricula AS M
             ON M.codigo_alumno = A.codigo
         INNER JOIN Taller AS T
             ON M.codigo_taller = T.codigo
+        INNER JOIN Docente AS D
+            ON T.codigo_docente = D.codigo
     WHERE
         A.codigo = _codigo_alumno
     ;

@@ -44,7 +44,7 @@ get '/alumno/:codigo/getTalleres' do
   __status = 200
   __rows = []
   begin
-    __rows = alumnoController.getTalleresFromAlumno(params['codigo'])
+    __rows = alumnoController.getNotasFromAlumno(params['codigo'])
   rescue => exception
     __status = 412
     __message = exception.to_s

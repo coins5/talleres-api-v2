@@ -38,4 +38,13 @@ class AlumnoController < PrimaryController
     results = statement.execute(id)
     return resultToArray(results)
   end
+
+  def getNotasFromAlumno (id)
+    validateInteger!('id', id)
+
+    query = 'CALL getNotasFromAlumno(?)'
+    statement = @client.prepare(query)
+    results = statement.execute(id)
+    return resultToArray(results)
+  end
 end
