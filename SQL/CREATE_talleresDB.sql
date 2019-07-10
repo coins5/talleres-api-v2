@@ -109,13 +109,13 @@ DELIMITER ;
 DELIMITER //
 DROP PROCEDURE IF EXISTS getRB_alumnos //
 CREATE PROCEDURE getRB_alumnos (
-    _codigo_alumno INT UNSIGNED
+    _codigo INT
 )
 BEGIN
     
     SELECT 	codigo, nombre, apellido, email, password
-    FROM 	alumno
-    WHERE 	CASE WHEN codigo = -1 THEN codigo = _codigo_alumno ELSE codigo = _codigo_alumno END;
+    FROM 	Alumno
+    WHERE 	CASE WHEN _codigo = -1 THEN codigo = codigo ELSE codigo = _codigo END;
 END //
 DELIMITER ;
 
