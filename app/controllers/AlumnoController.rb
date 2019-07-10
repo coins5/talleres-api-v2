@@ -25,7 +25,7 @@ class AlumnoController < PrimaryController
     validateInteger!('id', id)
     query = 'CALL getRB_alumnos(?)'
     statement = @client.prepare(query)
-    results = statement.execute(id, id)
+    results = statement.execute(id)
     return resultToArray(results)
   end
 
