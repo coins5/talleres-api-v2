@@ -23,10 +23,9 @@ class AlumnoController < PrimaryController
 
   def getAlumno (id)
     validateInteger!('id', id)
-
-    query = 'SELECT codigo, nombre, apellido FROM Alumno WHERE codigo = ?'
+    query = 'CALL getRB_alumnos(?)'
     statement = @client.prepare(query)
-    results = statement.execute(id)
+    results = statement.execute(id, id)
     return resultToArray(results)
   end
 

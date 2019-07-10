@@ -107,6 +107,19 @@ END //
 DELIMITER ;
 
 DELIMITER //
+DROP PROCEDURE IF EXISTS getRB_alumnos //
+CREATE PROCEDURE getRB_alumnos (
+    _codigo_alumno INT UNSIGNED
+)
+BEGIN
+    
+    SELECT 	codigo, nombre, apellido, email, password
+    FROM 	alumno
+    WHERE 	CASE WHEN codigo = -1 THEN codigo = _codigo_alumno ELSE codigo = _codigo_alumno END;
+END //
+DELIMITER ;
+
+DELIMITER //
 DROP PROCEDURE IF EXISTS getNotasFromAlumno //
 CREATE PROCEDURE getNotasFromAlumno (
     _codigo_alumno INT UNSIGNED
