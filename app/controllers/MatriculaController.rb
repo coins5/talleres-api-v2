@@ -36,7 +36,7 @@ class MatriculaController < PrimaryController
     validate_tipo_eval!(tipoEval)
     validateInteger!('codigo_alumno', codigo_alumno)
     validateInteger!('codigo_taller', codigo_taller)
-    validateInteger!('nota', nota)
+    validateDecimal!('nota', nota)
 
     query = "UPDATE Matricula SET #{tipoEval}=? "
     query += 'WHERE codigo_alumno=? AND codigo_taller=?'

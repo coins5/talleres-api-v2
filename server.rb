@@ -8,7 +8,7 @@ require './routes/DocenteRouter.rb'
 require './routes/TallerRouter.rb'
 require './routes/MatriculaRouter.rb'
 
-set :port, 2193
+set :port, ENV['RACK_ENV'] == 'production' ? 80 : 2193
 
 # Habilitando CORS
 # https://medium.com/addval-labs/adding-cors-configuration-to-a-sinatra-app-1ed426e2c028

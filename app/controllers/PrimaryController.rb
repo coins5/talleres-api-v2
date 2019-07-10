@@ -50,8 +50,17 @@ private
   def validateInteger! (attr_name, attr_value)
     begin
       Integer(attr_value)
+      return true
     rescue => exception
       raise "#{attr_name} debe ser integer. Valor encontrado: #{attr_value}"
+    end
+  end
+
+  def validateDecimal! (attr_name, attr_value)
+    if attr_value % 1 == 0
+      if (validateInteger!(attr_name, attr_value) != true)
+        raise "#{attr_name} debe ser decimal. Valor encontrado: #{attr_value}"
+      end
     end
   end
 

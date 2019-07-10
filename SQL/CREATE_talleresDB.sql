@@ -89,12 +89,19 @@ BEGIN
         T.codigo
         , T.nombre
         , T.tipoTaller
+        , COUNT(M.codigo_alumno) AS alumnos
     FROM
         Docente AS D
         INNER JOIN Taller AS T
             ON D.codigo = T.codigo_docente
+        INNER JOIN Matricula AS M
+            ON T.codigo = M.codigo_taller
     WHERE
         D.codigo = _codigo_docente
+    GROUP BY
+        T.codigo
+        , T.nombre
+        , T.tipoTaller
     ;
 END //
 DELIMITER ;
