@@ -2,7 +2,7 @@ require './app/controllers/PrimaryController'
 require './app/builders/MatriculaBuilder'
 
 class MatriculaController < PrimaryController
-  VALID_TIPO_EVALUACION = ["eval1", "eval2", "evalfinal"]
+  VALID_TIPO_EVALUACION = ["eval1", "eval2", "evalVirtual", "evalfinal"]
 
   def createMatricula (body)
     builder = MatriculaBuilder.new
@@ -25,7 +25,7 @@ class MatriculaController < PrimaryController
     validateInteger!('codigo_alumno', codigo_alumno)
     validateInteger!('codigo_taller', codigo_taller)
 
-    query = 'SELECT codigo_alumno, codigo_taller, eval1, eval2, evalFinal FROM Matricula '
+    query = 'SELECT codigo_alumno, codigo_taller, eval1, eval2, evalVirtual, evalFinal FROM Matricula '
     query += 'WHERE codigo_alumno = ? AND codigo_taller = ?'
     statement = @client.prepare(query)
     results = statement.execute(codigo_alumno, codigo_taller)

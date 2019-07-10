@@ -23,6 +23,7 @@ CREATE TABLE Matricula (
   , codigo_taller INT UNSIGNED
   , eval1 DECIMAL(6, 4) NOT NULL DEFAULT 0.0
   , eval2 DECIMAL(6, 4) NOT NULL DEFAULT 0.0
+  , evalVirtual DECIMAL(6, 4) NOT NULL DEFAULT 0.0
   , evalFinal DECIMAL(6, 4) NOT NULL DEFAULT 0.0
   , PRIMARY KEY(codigo_alumno, codigo_taller)
 );
@@ -48,6 +49,7 @@ BEGIN
         , A.email AS email
         , M.eval1
         , M.eval2
+        , M.evalVirtual
         , M.evalFinal
     FROM
          Matricula AS M
@@ -129,6 +131,7 @@ BEGIN
         M.codigo_taller
         , M.eval1
         , M.eval2
+        , M.evalVirtual
         , M.evalFinal
         , T.nombre AS nombre_taller
         , T.tipoTaller
@@ -148,3 +151,32 @@ BEGIN
     ;
 END //
 DELIMITER ;
+
+
+INSERT INTO Alumno(nombre, apellido, email, password) VALUES ('Alumno1', 'Apellido1', 'correo@correo.com', '123456');
+INSERT INTO Alumno(nombre, apellido, email, password) VALUES ('Alumno2', 'Apellido2', 'correo@correo.com', '123456');
+INSERT INTO Alumno(nombre, apellido, email, password) VALUES ('Alumno3', 'Apellido3', 'correo@correo.com', '123456');
+INSERT INTO Alumno(nombre, apellido, email, password) VALUES ('Alumno4', 'Apellido4', 'correo@correo.com', '123456');
+INSERT INTO Alumno(nombre, apellido, email, password) VALUES ('Alumno5', 'Apellido5', 'correo@correo.com', '123456');
+
+
+INSERT INTO Docente(nombre, apellido, email, password) VALUES ('Docente1', 'Apellido1', 'correo@correo.com', '123456');
+INSERT INTO Docente(nombre, apellido, email, password) VALUES ('Docente2', 'Apellido2', 'correo@correo.com', '123456');
+INSERT INTO Docente(nombre, apellido, email, password) VALUES ('Docente3', 'Apellido3', 'correo@correo.com', '123456');
+INSERT INTO Docente(nombre, apellido, email, password) VALUES ('Docente4', 'Apellido4', 'correo@correo.com', '123456');
+INSERT INTO Docente(nombre, apellido, email, password) VALUES ('Docente5', 'Apellido5', 'correo@correo.com', '123456');
+
+
+INSERT INTO Taller(nombre, tipoTaller, codigo_docente) VALUES
+    ('Taller 1', 'practico', 1)
+    , ('Taller 2', 'blended', 1)
+    , ('Taller 3', 'teorico', 1)
+    , ('Taller 4', 'practico', 2)
+    , ('Taller 5', 'blended', 2)
+    , ('Taller 6', 'teorico', 2)
+    , ('Taller 7', 'teorico', 3)
+    , ('Taller 8', 'teorico', 4)
+    , ('Taller 9', 'teorico', 5)
+    , ('Taller 10', 'teorico', 5)
+;
+

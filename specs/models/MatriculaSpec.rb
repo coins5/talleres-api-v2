@@ -7,6 +7,7 @@ RSpec.describe MatriculaBuilder do
   builder.set_codigo_taller('T001')
   builder.set_eval1(15.25)
   builder.set_eval2(14.23)
+  builder.set_evalVirtual(13.9)
   builder.set_evalFinal(19.23)
   matricula = builder.matricula
   
@@ -22,6 +23,9 @@ RSpec.describe MatriculaBuilder do
     end
     it "returns 14.23 for eval2" do
       expect(matricula.eval2).to eq(14.23)
+    end
+    it "returns 13.9 for evalVirtual" do
+      expect(matricula.evalVirtual).to eq(13.9)
     end
     it "returns 19.23 for evalFinal" do
       expect(matricula.evalFinal).to eq(19.23)

@@ -28,6 +28,11 @@ class MatriculaBuilder < PrimaryBuilder
     @matricula.eval2 = eval2
   end
 
+  def set_evalVirtual (evalVirtual)
+    #validate_presence!("eval2", eval2)
+    @matricula.evalVirtual = evalVirtual
+  end
+
   def set_evalFinal (evalFinal)
     #validate_presence!("evalFinal", evalFinal)
     @matricula.evalFinal = evalFinal
