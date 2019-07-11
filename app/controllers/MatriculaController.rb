@@ -2,7 +2,7 @@ require './app/controllers/PrimaryController'
 require './app/builders/MatriculaBuilder'
 
 class MatriculaController < PrimaryController
-  VALID_TIPO_EVALUACION = ["eval1", "eval2", "evalVirtual", "evalfinal"]
+  VALID_TIPO_EVALUACION = ["eval1", "eval2", "evalvirtual", "evalfinal"]
 
   def createMatricula (body)
     builder = MatriculaBuilder.new
